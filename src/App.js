@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import PeriodContainer from './components/PeriodContainer';
+import PeriodList from './components/PeriodList';
 
 class App extends Component {
   render() {
     return (
       <div>
-        <PeriodContainer />
+        <PeriodList />
       </div>
     );
   }

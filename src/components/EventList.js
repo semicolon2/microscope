@@ -1,16 +1,16 @@
 import React, {PureComponent} from 'react';
 import Event from './Event';
 
-class EventContainer extends PureComponent {
+class EventList extends PureComponent {
   render() {
     return(
       <div className="flex flex-col items-start">
-        <Event />
-        <Event />
-        <Event />
+      {this.props.events.map((event) => {
+          return <Event {...event} />
+        })}
       </div>
     )
   }
 }
 
-export default EventContainer;
+export default EventList;
