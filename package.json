@@ -1,0 +1,23 @@
+{
+  "name": "microscope",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "^16.4.1",
+    "react-collapsible": "^2.2.0",
+    "react-dom": "^16.4.1",
+    "react-scripts": "1.1.4"
+  },
+  "scripts": {
+    "build:css": "postcss src/index.pcss -o src/index.css",
+    "start": "yarn run build:css && react-scripts start",
+    "build": "yarn run build:css && react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "autoprefixer": "^8.6.4",
+    "postcss-cli": "^5.0.1",
+    "tailwindcss": "^0.6.1"
+  }
+}
