@@ -27,7 +27,7 @@ const initialState = {
     {
       id: 'event-2',
       periodId: 'period-1',
-      title: 'event 2 title',
+      title: 'event 2 title just a bit more',
       text: 'a second event with no scenes',
       tone: 'light'
     },

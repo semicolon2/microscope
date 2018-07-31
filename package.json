@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "immutable": "^3.8.2",
     "react": "^16.4.1",
     "react-beautiful-dnd": "^8.0.5",
     "react-collapsible": "^2.2.0",

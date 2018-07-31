@@ -8,15 +8,14 @@ import Period from './Period';
 class PeriodList extends PureComponent {
 
   onDragEnd = (result) => {
-    // if (!result.destination || result.destination.droppableId !== result.source.droppableId) {
-    //   return;
-    // }
+    if (!result.destination || result.destination.droppableId !== result.source.droppableId || result.destination.index === result.source.index) {
+      return;
+    }
 
-    // this.props.dragDrop({
-    //   list: result.source.droppableId,
-    //   startIndex: result.source.index,
-    //   endIndex: result.destination.index
-    // });
+    this.props.dragDropPeriod({
+      startIndex: result.source.index,
+      endIndex: result.destination.index
+    });
   }
 
   render() {

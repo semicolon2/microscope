@@ -7,7 +7,7 @@ class Event extends PureComponent {
 
   toneTrigger = (
     <div className="flex justify-around m-1 items-center" > 
-      <p>{this.props.title}</p>
+      <p className="pr-1" >{this.props.title}</p>
       <Tone toneHeight="h-6" tone={this.props.tone} />
     </div>)
 

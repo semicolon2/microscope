@@ -8,7 +8,7 @@ class Scene extends PureComponent {
 
   toneTrigger = (
     <div className="flex justify-around m-1" > 
-      <p>{this.props.question}</p> 
+      <p className="pr-1" >{this.props.question}</p> 
       <Tone toneHeight="h-6" tone={this.props.tone} /> 
     </div>)
 
