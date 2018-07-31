@@ -14,7 +14,7 @@ class Scene extends PureComponent {
 
   render() {
     return(
-      <div className="border border-t-0 rounded-t-none border-grey-darker w-48 h-auto rounded text-center" >
+      <div className="border border-t-0 rounded-t-none border-grey-darker w-48 h-auto rounded text-center bg-white" >
         <span className="drag-handle"></span>
         <div>
           <Collapsible trigger={this.toneTrigger} transitionTime={200} lazyRender={true} >

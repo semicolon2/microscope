@@ -7,13 +7,10 @@ import EventList from './EventList';
 class Period extends PureComponent {
   render() {
     return (
-      <Draggable draggableId={this.props.key} index={this.props.index}>
+      <Draggable draggableId={this.props.id} index={this.props.index}>
         {(provided) => (
-          <div className="flex flex-col items-center" >
-          <div 
-          className="card-border w-32 h-48 bg-white"
-          {...provided.draggableProps}
-          ref={provided.innerRef}>
+          <div className="flex flex-col items-center" {...provided.draggableProps} ref={provided.innerRef} >
+          <div className="card-border w-32 h-48">
             <span className="drag-handle" {...provided.dragHandleProps} ></span>
             <p className="text-center">{this.props.text}</p>
             <Tone tone={this.props.tone} toneHeight="h-16" />

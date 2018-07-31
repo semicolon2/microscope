@@ -6,7 +6,7 @@ class EventList extends PureComponent {
     return(
       <div className="flex flex-col items-start">
       {this.props.events.map((event) => {
-          return <Event {...event} />
+          return <Event {...event} key={event.id} />
         })}
       </div>
     )

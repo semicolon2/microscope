@@ -14,18 +14,17 @@ class PeriodList extends PureComponent {
     return (
       <DragDropContext onDragEnd={this.onDragEnd}>
         <Droppable droppableId="Period" direction="horizontal">
-            {(provided) => (
-                <div 
-                  className="flex justify-center items-start mt-32 h-screen"
-                  ref={provided.innerRef}
-                  {...provided.droppableProps}>
-                  {this.props.periods.map((period, index) => {
-                    return <Period {...period} index={index} />
-                  })}
-                  {provided.placeholder}
-                </div>
-              )
-            }
+          {(provided) => (
+            <div 
+              className="flex justify-center items-start mt-32 h-screen"
+              ref={provided.innerRef}
+              {...provided.droppableProps}>
+              {this.props.periods.map((period, index) => {
+                return <Period {...period} key={period.id} index={index} />
+              })}
+              {provided.placeholder}
+            </div>
+          )}
         </Droppable>
       </DragDropContext>
     )

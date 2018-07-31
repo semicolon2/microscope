@@ -6,7 +6,7 @@ class SceneList extends PureComponent {
     return(
       <div className="flex flex-col items-center mb-2">
         {this.props.scenes.map((scene) => {
-          return <Scene {...scene} />
+          return <Scene {...scene} key={scene.id} />
         })}
       </div>
     )

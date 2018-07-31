@@ -663,6 +663,7 @@ table {
   justify-content: space-between;
   padding-top: .25rem;
   padding-bottom: .25rem;
+  background-color: #fff;
 }
 
 .trans {
