@@ -2,12 +2,21 @@ import React, {PureComponent} from 'react';
 import {connect} from 'react-redux';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
+import * as actionCreators from '../actionCreators';
 import Period from './Period';
 
 class PeriodList extends PureComponent {
 
-  onDragEnd = (result) => {
+  onDragEnd = (result) => { //TODO: flatten state tree (periods, events, scenes)
+    // if (!result.destination || result.destination.droppableId !== result.source.droppableId) {
+    //   return;
+    // }
 
+    // this.props.dragDrop({
+    //   list: result.source.droppableId,
+    //   startIndex: result.source.index,
+    //   endIndex: result.destination.index
+    // });
   }
 
   render() {
@@ -37,6 +46,6 @@ function mapStateToProps(state) {
   };
 };
 
-const PeriodListContainer = connect(mapStateToProps)(PeriodList);
+const PeriodListContainer = connect(mapStateToProps, actionCreators)(PeriodList);
 
 export default PeriodListContainer;
