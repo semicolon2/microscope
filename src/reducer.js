@@ -1,7 +1,10 @@
 import {combineReducers} from 'redux';
 
 function dragDropPeriod(state, startIndex, endIndex) {
-  return [...state.splice(endIndex, 0, ...state.splice(startIndex, 1))]
+  let newState = [...state];
+  let [removed] = newState.splice(startIndex, 1);
+  newState.splice(endIndex, 0, removed);
+  return newState;
 }
 
 function periods(state = [], action) {
