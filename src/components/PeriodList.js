@@ -1,16 +1,33 @@
 import React, {PureComponent} from 'react';
 import {connect} from 'react-redux';
+import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
 import Period from './Period';
 
 class PeriodList extends PureComponent {
+
+  onDragEnd = (result) => {
+
+  }
+
   render() {
-    return(
-      <div className="flex justify-center items-start mt-32 h-screen">
-        {this.props.periods.map((period) => {
-          return <Period {...period} />
-        })}
-      </div>
+    return (
+      <DragDropContext onDragEnd={this.onDragEnd}>
+        <Droppable droppableId="Period" direction="horizontal">
+            {(provided) => (
+                <div 
+                  className="flex justify-center items-start mt-32 h-screen"
+                  ref={provided.innerRef}
+                  {...provided.droppableProps}>
+                  {this.props.periods.map((period, index) => {
+                    return <Period {...period} index={index} />
+                  })}
+                  {provided.placeholder}
+                </div>
+              )
+            }
+        </Droppable>
+      </DragDropContext>
     )
   }
 }
