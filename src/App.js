@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import PeriodList from './components/PeriodList';
+import React, { Component } from "react";
+import PeriodList from "./components/PeriodList";
 
 class App extends Component {
   render() {

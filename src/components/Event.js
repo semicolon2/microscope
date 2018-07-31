@@ -1,34 +1,36 @@
-import React, {PureComponent} from 'react';
-import Tone from './Tone';
-import Collapsible from 'react-collapsible';
-import SceneList from './SceneList';
+import React, { PureComponent } from "react";
+import Tone from "./Tone";
+import Collapsible from "react-collapsible";
+import SceneList from "./SceneList";
 
 class Event extends PureComponent {
-
   toneTrigger = (
-    <div className="flex justify-around m-1 items-center" > 
-      <p className="pr-1" >{this.props.title}</p>
+    <div className="flex justify-around m-1 items-center">
+      <p className="pr-1">{this.props.title}</p>
       <Tone toneHeight="h-6" tone={this.props.tone} />
-    </div>)
+    </div>
+  );
 
   render() {
     return (
       <div>
-        <div className="card-border w-48 h-auto mb-0" >
-        <span className="drag-handle"></span>
+        <div className="card-border w-48 h-auto mb-0">
+          <span className="drag-handle" />
           <div className="mt-1 mb-1 text-center">
             <Collapsible trigger={this.toneTrigger} transitionTime={200}>
-              <div className="p-1" >
-                <p className="border-grey-darkest border-t" > {this.props.text} </p>
+              <div className="p-1">
+                <p className="border-grey-darkest border-t">
+                  {" "}
+                  {this.props.text}{" "}
+                </p>
               </div>
             </Collapsible>
           </div>
         </div>
         <SceneList eventId={this.props.id} />
       </div>
-    )
+    );
   }
 }
-
 
 export default Event;
