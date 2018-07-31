@@ -24,7 +24,7 @@ class Event extends PureComponent {
             </Collapsible>
           </div>
         </div>
-        <SceneList scenes={this.props.scenes} />
+        <SceneList eventId={this.props.id} />
       </div>
     )
   }

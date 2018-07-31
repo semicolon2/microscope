@@ -7,7 +7,7 @@ import Period from './Period';
 
 class PeriodList extends PureComponent {
 
-  onDragEnd = (result) => { //TODO: flatten state tree (periods, events, scenes)
+  onDragEnd = (result) => {
     // if (!result.destination || result.destination.droppableId !== result.source.droppableId) {
     //   return;
     // }
