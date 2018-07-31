@@ -37,6 +37,13 @@ const initialState = {
       title: "event 3 title",
       text: "the third event with some scenes",
       tone: "light"
+    },
+    {
+      id: "event-4",
+      periodId: "period-1",
+      title: "event 4 title",
+      text: "the fourth event for DnD",
+      tone: "light"
     }
   ],
   scenes: [
