@@ -15,16 +15,34 @@ class PeriodList extends PureComponent {
       return;
     }
 
-    this.props.dragDropPeriod({
-      startIndex: result.source.index,
-      endIndex: result.destination.index
-    });
+    switch (result.type) {
+      case "period":
+        this.props.dragDropPeriod({
+          startIndex: result.source.index,
+          endIndex: result.destination.index
+        });
+        break;
+      case "event":
+        this.props.dragDropEvent({
+          startIndex: result.source.index,
+          endIndex: result.destination.index
+        });
+        break;
+      case "scene":
+        this.props.dragDropScene({
+          startIndex: result.source.index,
+          endIndex: result.destination.index
+        });
+        break;
+      default:
+        return;
+    }
   };
 
   render() {
     return (
       <DragDropContext onDragEnd={this.onDragEnd}>
-        <Droppable droppableId="Period" direction="horizontal">
+        <Droppable droppableId="periods" direction="horizontal" type="period">
           {provided => (
             <div
               className="flex justify-center items-start mt-32 h-screen"

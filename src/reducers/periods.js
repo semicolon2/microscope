@@ -1,5 +1,3 @@
-import { combineReducers } from "redux";
-
 function dragDropPeriod(state, startIndex, endIndex) {
   let newState = [...state];
   let [removed] = newState.splice(startIndex, 1);
@@ -7,7 +5,7 @@ function dragDropPeriod(state, startIndex, endIndex) {
   return newState;
 }
 
-function periods(state = [], action) {
+export default function periods(state = [], action) {
   switch (action.type) {
     case "DRAG_DROP_PERIOD":
       return dragDropPeriod(
@@ -19,19 +17,3 @@ function periods(state = [], action) {
       return state;
   }
 }
-
-function events(state = []) {
-  return state;
-}
-
-function scenes(state = []) {
-  return state;
-}
-
-const reducer = combineReducers({
-  periods,
-  events,
-  scenes
-});
-
-export default reducer;

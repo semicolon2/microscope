@@ -1,5 +1,6 @@
 import React, { PureComponent } from "react";
 import { connect } from "react-redux";
+import { Droppable } from "react-beautiful-dnd";
 
 import * as actionCreators from "../actionCreators";
 import Event from "./Event";
@@ -7,13 +8,22 @@ import Event from "./Event";
 class EventList extends PureComponent {
   render() {
     return (
-      <div className="flex flex-col items-start">
-        {this.props.events
-          .filter(event => event.periodId === this.props.periodId)
-          .map(event => {
-            return <Event {...event} key={event.id} />;
-          })}
-      </div>
+      <Droppable droppableId={this.props.periodId} type="event">
+        {provided => (
+          <div
+            className="flex flex-col items-start"
+            ref={provided.innerRef}
+            {...provided.droppableProps}
+          >
+            {this.props.events
+              .filter(event => event.periodId === this.props.periodId)
+              .map(event => {
+                return <Event {...event} key={event.id} />;
+              })}
+            {provided.placeholder}
+          </div>
+        )}
+      </Droppable>
     );
   }
 }
