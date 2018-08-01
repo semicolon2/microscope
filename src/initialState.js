@@ -1,80 +1,103 @@
 const initialState = {
-  periods: [
-    {
-      id: "period-1",
-      text: "title of period",
-      tone: "light"
+  periods: {
+    byId: {
+      period1: {
+        id: "period1",
+        text: "title of period",
+        tone: "light",
+        events: ["event1", "event2", "event4"]
+      },
+      period2: {
+        id: "period2",
+        text: "title of period 2",
+        tone: "dark",
+        events: ["event3", "event5"]
+      },
+      period3: {
+        id: "period3",
+        text: "third period for DnD",
+        tone: "light",
+        events: []
+      }
     },
-    {
-      id: "period-2",
-      text: "title of period 2",
-      tone: "dark"
+    allIds: ["period1", "period2", "period3"]
+  },
+  events: {
+    byId: {
+      event1: {
+        id: "event1",
+        periodId: "period1",
+        title: "event 1 title but longer still",
+        text: "brief but clear description of event",
+        tone: "dark"
+      },
+      event2: {
+        id: "event2",
+        periodId: "period1",
+        title: "event 2 title just a bit more",
+        text: "a second event with no scenes",
+        tone: "light"
+      },
+      event3: {
+        id: "event3",
+        periodId: "period2",
+        title: "event 3 title",
+        text: "the third event with some scenes",
+        tone: "light"
+      },
+      event4: {
+        id: "event4",
+        periodId: "period1",
+        title: "event 4 title",
+        text: "the fourth event for DnD",
+        tone: "light"
+      },
+      event5: {
+        id: "event5",
+        periodId: "period2",
+        title: "event 5",
+        text: "another event under p2",
+        tone: "light"
+      }
     },
-    {
-      id: "period-3",
-      text: "third period for DnD",
-      tone: "light"
-    }
-  ],
-  events: [
-    {
-      id: "event-1",
-      periodId: "period-1",
-      title: "event 1 title but longer still",
-      text: "brief but clear description of event",
-      tone: "dark"
-    },
-    {
-      id: "event-2",
-      periodId: "period-1",
-      title: "event 2 title just a bit more",
-      text: "a second event with no scenes",
-      tone: "light"
-    },
-    {
-      id: "event-3",
-      periodId: "period-2",
-      title: "event 3 title",
-      text: "the third event with some scenes",
-      tone: "light"
-    },
-    {
-      id: "event-4",
-      periodId: "period-1",
-      title: "event 4 title",
-      text: "the fourth event for DnD",
-      tone: "light"
-    }
-  ],
-  scenes: [
-    {
-      id: "scene-1",
-      eventId: "event-3",
-      question: "the question/title of the scene",
-      text: "the quick description of events",
-      answer: "the answer to the question",
-      tone: "light"
-    },
-    {
-      id: "scene-2",
-      eventId: "event-3",
-      question: "the second scene of this event",
-      text: "the quick description of events",
-      answer: "the answer to the question",
-      tone: "dark"
-    },
-    {
-      id: "scene-3",
-      eventId: "event-1",
-      question: "a scene under event-1",
-      text: "the quick description of events",
-      answer: "the answer to the question",
-      tone: "dark"
-    }
-  ],
-  isDropDisabled: {
-    event: false,
-    scene: false
+    allIds: ["event1", "event2", "event3", "event4", "event5"]
+  },
+  scenes: {
+    byId: [
+      {
+        id: "scene1",
+        eventId: "event3",
+        question: "the question/title of the scene",
+        text: "the quick description of events",
+        answer: "the answer to the question",
+        tone: "light"
+      },
+      {
+        id: "scene2",
+        eventId: "event3",
+        question: "the second scene of this event",
+        text: "the quick description of events",
+        answer: "the answer to the question",
+        tone: "dark"
+      },
+      {
+        id: "scene3",
+        eventId: "event1",
+        question: "a scene under event1",
+        text: "the quick description of events",
+        answer: "the answer to the question",
+        tone: "dark"
+      },
+      {
+        id: "scene4",
+        eventId: "event1",
+        question: "a scene under event1",
+        text: "the quick description of events",
+        answer: "the answer to the question",
+        tone: "dark"
+      }
+    ],
+    allIds: ["scene1", "scene2", "scene3", "scene4"]
   }
 };
 

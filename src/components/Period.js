@@ -19,7 +19,7 @@ class Period extends PureComponent {
               <p className="text-center">{this.props.text}</p>
               <Tone tone={this.props.tone} toneHeight="h-16" />
             </div>
-            <EventList periodId={this.props.id} />
+            <EventList periodId={this.props.id} eventList={this.props.events} />
           </div>
         )}
       </Draggable>

@@ -34,8 +34,7 @@ class SceneList extends PureComponent {
 
 function mapStateToProps(state) {
   return {
-    scenes: state.scenes,
-    isDropDisabled: state.isDropDisabled.scene
+    scenes: state.scenes
   };
 }
 

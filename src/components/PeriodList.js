@@ -28,14 +28,14 @@ class PeriodList extends PureComponent {
         this.props.dragDropEvent({
           startIndex: result.source.index,
           endIndex: result.destination.index,
-          period: result.source.droppableId
+          periodId: result.source.droppableId
         });
         break;
       case "scene":
         this.props.dragDropScene({
           startIndex: result.source.index,
           endIndex: result.destination.index,
-          event: result.source.droppableId
+          eventId: result.source.droppableId
         });
         break;
       default:
@@ -56,8 +56,14 @@ class PeriodList extends PureComponent {
               ref={provided.innerRef}
               {...provided.droppableProps}
             >
-              {this.props.periods.map((period, index) => {
-                return <Period {...period} key={period.id} index={index} />;
+              {this.props.periods.allIds.map((periodId, index) => {
+                return (
+                  <Period
+                    {...this.props.periods.byId[periodId]}
+                    key={periodId}
+                    index={index}
+                  />
+                );
               })}
               {provided.placeholder}
             </div>
