@@ -1,5 +1,7 @@
 import React, { PureComponent } from "react";
 import Collapsible from "react-collapsible";
+import { Draggable } from "react-beautiful-dnd";
+
 import Tone from "./Tone";
 
 class Scene extends PureComponent {
@@ -12,23 +14,29 @@ class Scene extends PureComponent {
 
   render() {
     return (
-      <div className="border border-t-0 rounded-t-none border-grey-darker w-48 h-auto rounded text-center bg-white">
-        <span className="drag-handle" />
-        <div>
-          <Collapsible
-            trigger={this.toneTrigger}
-            transitionTime={200}
-            lazyRender={true}
+      <Draggable draggableId={this.props.id} index={this.props.index}>
+        {provided => (
+          <div
+            className="border border-t-0 rounded-t-none border-grey-darker w-48 h-auto rounded text-center bg-white"
+            {...provided.draggableProps}
+            ref={provided.innerRef}
           >
-            <div className="p-1 m-auto text-center">
-              <p className="border-t border-grey-darkest">{this.props.text}</p>
-              <p className="border-t border-grey-darkest">
-                {this.props.answer}
-              </p>
+            <span className="drag-handle" {...provided.dragHandleProps} />
+            <div>
+              <Collapsible trigger={this.toneTrigger} transitionTime={200}>
+                <div className="p-1 m-auto text-center">
+                  <p className="border-t border-grey-darkest">
+                    {this.props.text}
+                  </p>
+                  <p className="border-t border-grey-darkest">
+                    {this.props.answer}
+                  </p>
+                </div>
+              </Collapsible>
             </div>
-          </Collapsible>
-        </div>
-      </div>
+          </div>
+        )}
+      </Draggable>
     );
   }
 }

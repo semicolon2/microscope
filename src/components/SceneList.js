@@ -1,5 +1,6 @@
 import React, { PureComponent } from "react";
 import { connect } from "react-redux";
+import { Droppable } from "react-beautiful-dnd";
 
 import * as actionCreators from "../actionCreators";
 import Scene from "./Scene";
@@ -7,13 +8,22 @@ import Scene from "./Scene";
 class SceneList extends PureComponent {
   render() {
     return (
-      <div className="flex flex-col items-center mb-2">
-        {this.props.scenes
-          .filter(scene => scene.eventId === this.props.eventId)
-          .map(scene => {
-            return <Scene {...scene} key={scene.id} />;
-          })}
-      </div>
+      <Droppable droppableId={this.props.eventId} type="event">
+        {provided => (
+          <div
+            className="flex flex-col items-center mb-2"
+            ref={provided.innerRef}
+            {...provided.droppableProps}
+          >
+            {this.props.scenes
+              .filter(scene => scene.eventId === this.props.eventId)
+              .map((scene, index) => {
+                return <Scene {...scene} key={scene.id} index={index} />;
+              })}
+            {provided.placeholder}
+          </div>
+        )}
+      </Droppable>
     );
   }
 }

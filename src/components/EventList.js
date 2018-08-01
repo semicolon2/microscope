@@ -17,8 +17,8 @@ class EventList extends PureComponent {
           >
             {this.props.events
               .filter(event => event.periodId === this.props.periodId)
-              .map(event => {
-                return <Event {...event} key={event.id} />;
+              .map((event, index) => {
+                return <Event {...event} key={event.id} index={index} />;
               })}
             {provided.placeholder}
           </div>
