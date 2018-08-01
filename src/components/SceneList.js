@@ -8,7 +8,11 @@ import Scene from "./Scene";
 class SceneList extends PureComponent {
   render() {
     return (
-      <Droppable droppableId={this.props.eventId} type="event">
+      <Droppable
+        droppableId={this.props.eventId}
+        type="event"
+        isDropDisabled={true}
+      >
         {provided => (
           <div
             className="flex flex-col items-center mb-2"
@@ -30,7 +34,8 @@ class SceneList extends PureComponent {
 
 function mapStateToProps(state) {
   return {
-    scenes: state.scenes
+    scenes: state.scenes,
+    isDropDisabled: state.isDropDisabled.scene
   };
 }
 

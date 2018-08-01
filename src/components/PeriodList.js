@@ -6,6 +6,8 @@ import * as actionCreators from "../actionCreators";
 import Period from "./Period";
 
 class PeriodList extends PureComponent {
+  onDragStart = result => {};
+
   onDragEnd = result => {
     if (
       !result.destination ||
@@ -25,13 +27,15 @@ class PeriodList extends PureComponent {
       case "event":
         this.props.dragDropEvent({
           startIndex: result.source.index,
-          endIndex: result.destination.index
+          endIndex: result.destination.index,
+          period: result.source.droppableId
         });
         break;
       case "scene":
         this.props.dragDropScene({
           startIndex: result.source.index,
-          endIndex: result.destination.index
+          endIndex: result.destination.index,
+          event: result.source.droppableId
         });
         break;
       default:
@@ -41,7 +45,10 @@ class PeriodList extends PureComponent {
 
   render() {
     return (
-      <DragDropContext onDragEnd={this.onDragEnd}>
+      <DragDropContext
+        onDragEnd={this.onDragEnd}
+        onDragStart={this.onDragStart}
+      >
         <Droppable droppableId="periods" direction="horizontal" type="period">
           {provided => (
             <div

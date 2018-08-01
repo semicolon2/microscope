@@ -71,7 +71,11 @@ const initialState = {
       answer: "the answer to the question",
       tone: "dark"
     }
-  ]
+  ],
+  isDropDisabled: {
+    event: false,
+    scene: false
+  }
 };
 
 export default initialState;

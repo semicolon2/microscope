@@ -8,7 +8,11 @@ import Event from "./Event";
 class EventList extends PureComponent {
   render() {
     return (
-      <Droppable droppableId={this.props.periodId} type="event">
+      <Droppable
+        droppableId={this.props.periodId}
+        type="event"
+        isDropDisabled={false}
+      >
         {provided => (
           <div
             className="flex flex-col items-start"
@@ -30,7 +34,8 @@ class EventList extends PureComponent {
 
 function mapStateToProps(state) {
   return {
-    events: state.events
+    events: state.events,
+    isDropDisabled: state.isDropDisabled.event
   };
 }
 
