@@ -9,33 +9,34 @@ class PeriodList extends PureComponent {
   onDragStart = result => {};
 
   onDragEnd = result => {
+    const { destination, source, type } = result;
     if (
-      !result.destination ||
-      result.destination.droppableId !== result.source.droppableId ||
-      result.destination.index === result.source.index
+      !destination ||
+      destination.droppableId !== source.droppableId ||
+      destination.index === source.index
     ) {
       return;
     }
 
-    switch (result.type) {
+    switch (type) {
       case "period":
         this.props.dragDropPeriod({
-          startIndex: result.source.index,
-          endIndex: result.destination.index
+          startIndex: source.index,
+          endIndex: destination.index
         });
         break;
       case "event":
         this.props.dragDropEvent({
-          startIndex: result.source.index,
-          endIndex: result.destination.index,
-          periodId: result.source.droppableId
+          startIndex: source.index,
+          endIndex: destination.index,
+          periodId: source.droppableId
         });
         break;
       case "scene":
         this.props.dragDropScene({
-          startIndex: result.source.index,
-          endIndex: result.destination.index,
-          eventId: result.source.droppableId
+          startIndex: source.index,
+          endIndex: destination.index,
+          eventId: source.droppableId
         });
         break;
       default:

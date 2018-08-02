@@ -19,7 +19,7 @@ class EventList extends PureComponent {
             ref={provided.innerRef}
             {...provided.droppableProps}
           >
-            {this.props.eventList.map((eventId, index) => {
+            {this.props.eventIds.map((eventId, index) => {
               return (
                 <Event
                   {...this.props.events.byId[eventId]}

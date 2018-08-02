@@ -29,42 +29,48 @@ const initialState = {
         periodId: "period1",
         title: "event 1 title but longer still",
         text: "brief but clear description of event",
-        tone: "dark"
+        tone: "dark",
+        scenes: ["scene3", "scene4"]
       },
       event2: {
         id: "event2",
         periodId: "period1",
         title: "event 2 title just a bit more",
         text: "a second event with no scenes",
-        tone: "light"
+        tone: "light",
+        scenes: []
       },
       event3: {
         id: "event3",
         periodId: "period2",
         title: "event 3 title",
         text: "the third event with some scenes",
-        tone: "light"
+        tone: "light",
+        scenes: ["scene1", "scene2"]
       },
       event4: {
         id: "event4",
         periodId: "period1",
         title: "event 4 title",
         text: "the fourth event for DnD",
-        tone: "light"
+        tone: "light",
+        scenes: []
       },
       event5: {
         id: "event5",
         periodId: "period2",
         title: "event 5",
         text: "another event under p2",
-        tone: "light"
+        tone: "light",
+        scenes: []
       }
     },
+
     allIds: ["event1", "event2", "event3", "event4", "event5"]
   },
   scenes: {
-    byId: [
-      {
+    byId: {
+      scene1: {
         id: "scene1",
         eventId: "event3",
         question: "the question/title of the scene",
@@ -72,7 +78,7 @@ const initialState = {
         answer: "the answer to the question",
         tone: "light"
       },
-      {
+      scene2: {
         id: "scene2",
         eventId: "event3",
         question: "the second scene of this event",
@@ -80,7 +86,7 @@ const initialState = {
         answer: "the answer to the question",
         tone: "dark"
       },
-      {
+      scene3: {
         id: "scene3",
         eventId: "event1",
         question: "a scene under event1",
@@ -88,7 +94,7 @@ const initialState = {
         answer: "the answer to the question",
         tone: "dark"
       },
-      {
+      scene4: {
         id: "scene4",
         eventId: "event1",
         question: "a scene under event1",
@@ -96,7 +102,7 @@ const initialState = {
         answer: "the answer to the question",
         tone: "dark"
       }
-    ],
+    },
     allIds: ["scene1", "scene2", "scene3", "scene4"]
   }
 };

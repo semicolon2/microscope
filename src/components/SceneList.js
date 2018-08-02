@@ -10,8 +10,8 @@ class SceneList extends PureComponent {
     return (
       <Droppable
         droppableId={this.props.eventId}
-        type="event"
-        isDropDisabled={true}
+        type="scene"
+        isDropDisabled={false}
       >
         {provided => (
           <div
@@ -19,11 +19,15 @@ class SceneList extends PureComponent {
             ref={provided.innerRef}
             {...provided.droppableProps}
           >
-            {this.props.scenes
-              .filter(scene => scene.eventId === this.props.eventId)
-              .map((scene, index) => {
-                return <Scene {...scene} key={scene.id} index={index} />;
-              })}
+            {this.props.sceneIds.map((sceneId, index) => {
+              return (
+                <Scene
+                  {...this.props.scenes.byId[sceneId]}
+                  key={sceneId}
+                  index={index}
+                />
+              );
+            })}
             {provided.placeholder}
           </div>
         )}

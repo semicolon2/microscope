@@ -15,7 +15,11 @@ class Event extends PureComponent {
 
   render() {
     return (
-      <Draggable draggableId={this.props.id} index={this.props.index}>
+      <Draggable
+        draggableId={this.props.id}
+        index={this.props.index}
+        type="event"
+      >
         {provided => (
           <div {...provided.draggableProps} ref={provided.innerRef}>
             <div className="card-border w-48 h-auto mb-0">
@@ -31,7 +35,7 @@ class Event extends PureComponent {
                 </Collapsible>
               </div>
             </div>
-            {/* <SceneList eventId={this.props.id} /> */}
+            {/* <SceneList eventId={this.props.id} sceneIds={this.props.scenes} /> */}
           </div>
         )}
       </Draggable>

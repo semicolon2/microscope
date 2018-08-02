@@ -1,10 +1,11 @@
 import { combineReducers } from "redux";
 
-function dragDropPeriod(periodState, startIndex, endIndex) {
-  let allIds = [...periodState.allIds];
-  let [removed] = allIds.splice(startIndex, 1);
-  allIds.splice(endIndex, 0, removed);
-  return { ...periodState, allIds };
+function dragDropPeriod(periodIds, action) {
+  const { startIndex, endIndex } = action.payload;
+  let newPeriodIds = [...periodIds];
+  const [removed] = newPeriodIds.splice(startIndex, 1);
+  newPeriodIds.splice(endIndex, 0, removed);
+  return newPeriodIds;
 }
 
 function dragDropEvent(periods, action) {
@@ -12,7 +13,7 @@ function dragDropEvent(periods, action) {
   let period = { ...periods[periodId] };
   const [removed] = period.events.splice(startIndex, 1);
   period.events.splice(endIndex, 0, removed);
-  return { ...periods, period };
+  return { ...periods, [periodId]: period };
 }
 
 function periodsById(state = {}, action) {
@@ -27,11 +28,7 @@ function periodsById(state = {}, action) {
 function allPeriods(state = [], action) {
   switch (action.type) {
     case "DRAG_DROP_PERIOD":
-      return dragDropPeriod(
-        state,
-        action.payload.startIndex,
-        action.payload.endIndex
-      );
+      return dragDropPeriod(state, action);
     default:
       return state;
   }

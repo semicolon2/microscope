@@ -7,7 +7,11 @@ import EventList from "./EventList";
 class Period extends PureComponent {
   render() {
     return (
-      <Draggable draggableId={this.props.id} index={this.props.index}>
+      <Draggable
+        draggableId={this.props.id}
+        index={this.props.index}
+        type="period"
+      >
         {provided => (
           <div
             className="flex flex-col items-center"
@@ -19,7 +23,7 @@ class Period extends PureComponent {
               <p className="text-center">{this.props.text}</p>
               <Tone tone={this.props.tone} toneHeight="h-16" />
             </div>
-            <EventList periodId={this.props.id} eventList={this.props.events} />
+            <EventList periodId={this.props.id} eventIds={this.props.events} />
           </div>
         )}
       </Draggable>
