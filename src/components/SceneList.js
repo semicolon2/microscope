@@ -21,6 +21,7 @@ class SceneList extends PureComponent {
                   {...this.props.scenes[sceneId]}
                   key={sceneId}
                   index={index}
+                  eventIsDragging={this.props.eventIsDragging}
                 />
               );
             })}

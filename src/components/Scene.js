@@ -19,7 +19,9 @@ class Scene extends PureComponent {
           <div {...provided.draggableProps} ref={provided.innerRef}>
             <div
               className={`border border-t-0 rounded-t-none border-grey-darker w-48 h-auto rounded text-center bg-white trans ${
-                snapshot.isDragging ? "shadow-lg" : "shadow-md"
+                snapshot.isDragging || this.props.eventIsDragging
+                  ? "shadow-lg"
+                  : "shadow-md"
               }`}
               style={
                 snapshot.isDragging
