@@ -8,11 +8,7 @@ import Scene from "./Scene";
 class SceneList extends PureComponent {
   render() {
     return (
-      <Droppable
-        droppableId={this.props.eventId}
-        type="scene"
-        isDropDisabled={false}
-      >
+      <Droppable droppableId={this.props.eventId} type="scene">
         {provided => (
           <div
             className="flex flex-col items-center mb-2"

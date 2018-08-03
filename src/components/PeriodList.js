@@ -33,6 +33,14 @@ class PeriodList extends PureComponent {
   onDragEnd = result => {
     const { destination, source, type } = result;
 
+    if (
+      !destination ||
+      source.droppableId !== destination.droppableId ||
+      source.index === destination.index
+    ) {
+      return;
+    }
+
     switch (type) {
       case "period":
         this.props.dropPeriod({

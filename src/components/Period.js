@@ -12,7 +12,7 @@ class Period extends PureComponent {
         index={this.props.index}
         type="period"
       >
-        {provided => (
+        {(provided, snapshot) => (
           <div
             className="flex flex-col items-center"
             {...provided.draggableProps}
@@ -20,8 +20,13 @@ class Period extends PureComponent {
           >
             <div
               className={`card-border w-32 h-48 trans ${
-                this.props.dragging ? "shadow-lg" : "shadow-md"
+                snapshot.isDragging ? "shadow-lg" : "shadow-md"
               }`}
+              style={
+                snapshot.isDragging
+                  ? { transform: "scale(1.05)" }
+                  : { transform: "scale(1)" }
+              }
             >
               <span className="drag-handle" {...provided.dragHandleProps} />
               <p className="text-center">{this.props.text}</p>

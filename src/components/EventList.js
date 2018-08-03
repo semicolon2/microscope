@@ -8,11 +8,7 @@ import Event from "./Event";
 class EventList extends PureComponent {
   render() {
     return (
-      <Droppable
-        droppableId={this.props.periodId}
-        type="event"
-        isDropDisabled={false}
-      >
+      <Droppable droppableId={this.props.periodId} type="event">
         {provided => (
           <div
             className="flex flex-col items-start"

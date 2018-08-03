@@ -20,9 +20,18 @@ class Event extends PureComponent {
         index={this.props.index}
         type="event"
       >
-        {provided => (
+        {(provided, snapshot) => (
           <div {...provided.draggableProps} ref={provided.innerRef}>
-            <div className="card-border w-48 h-auto mb-0">
+            <div
+              className={`card-border w-48 h-auto mb-0 trans ${
+                snapshot.isDragging ? "shadow-lg" : "shadow-md"
+              }`}
+              style={
+                snapshot.isDragging
+                  ? { transform: "scale(1.05)" }
+                  : { transform: "scale(1)" }
+              }
+            >
               <span className="drag-handle" {...provided.dragHandleProps} />
               <div className="mt-1 mb-1 text-center">
                 <Collapsible trigger={this.toneTrigger} transitionTime={200}>
