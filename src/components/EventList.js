@@ -11,7 +11,7 @@ class EventList extends PureComponent {
       <Droppable
         droppableId={this.props.periodId}
         type="event"
-        isDropDisabled={this.props.periodId !== "period1" ? true : false}
+        isDropDisabled={false}
       >
         {provided => (
           <div
@@ -22,7 +22,7 @@ class EventList extends PureComponent {
             {this.props.eventIds.map((eventId, index) => {
               return (
                 <Event
-                  {...this.props.events.byId[eventId]}
+                  {...this.props.events[eventId]}
                   key={eventId}
                   index={index}
                 />
@@ -38,7 +38,7 @@ class EventList extends PureComponent {
 
 function mapStateToProps(state) {
   return {
-    events: state.events
+    events: state.events.byId
   };
 }
 

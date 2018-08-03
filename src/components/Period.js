@@ -18,7 +18,11 @@ class Period extends PureComponent {
             {...provided.draggableProps}
             ref={provided.innerRef}
           >
-            <div className="card-border w-32 h-48">
+            <div
+              className={`card-border w-32 h-48 trans ${
+                this.props.dragging ? "shadow-lg" : "shadow-md"
+              }`}
+            >
               <span className="drag-handle" {...provided.dragHandleProps} />
               <p className="text-center">{this.props.text}</p>
               <Tone tone={this.props.tone} toneHeight="h-16" />

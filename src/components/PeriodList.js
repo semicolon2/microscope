@@ -6,37 +6,55 @@ import * as actionCreators from "../actionCreators";
 import Period from "./Period";
 
 class PeriodList extends PureComponent {
-  onDragStart = result => {};
-
-  onDragEnd = result => {
-    const { destination, source, type } = result;
-    if (
-      !destination ||
-      destination.droppableId !== source.droppableId ||
-      destination.index === source.index
-    ) {
-      return;
-    }
+  onDragStart = start => {
+    const { draggableId, type } = start;
 
     switch (type) {
       case "period":
-        this.props.dragDropPeriod({
-          startIndex: source.index,
-          endIndex: destination.index
+        this.props.dragPeriod({
+          periodId: draggableId
         });
         break;
       case "event":
-        this.props.dragDropEvent({
-          startIndex: source.index,
-          endIndex: destination.index,
-          periodId: source.droppableId
+        this.props.dragEvent({
+          eventId: draggableId
         });
         break;
       case "scene":
-        this.props.dragDropScene({
+        this.props.dragScene({
+          sceneId: draggableId
+        });
+        break;
+      default:
+        return;
+    }
+  };
+
+  onDragEnd = result => {
+    const { destination, source, type } = result;
+
+    switch (type) {
+      case "period":
+        this.props.dropPeriod({
           startIndex: source.index,
           endIndex: destination.index,
-          eventId: source.droppableId
+          periodId: result.draggableId
+        });
+        break;
+      case "event":
+        this.props.dropEvent({
+          startIndex: source.index,
+          endIndex: destination.index,
+          periodId: source.droppableId,
+          eventId: result.draggableId
+        });
+        break;
+      case "scene":
+        this.props.dropScene({
+          startIndex: source.index,
+          endIndex: destination.index,
+          eventId: source.droppableId,
+          sceneId: result.draggableId
         });
         break;
       default:
@@ -57,10 +75,10 @@ class PeriodList extends PureComponent {
               ref={provided.innerRef}
               {...provided.droppableProps}
             >
-              {this.props.periods.allIds.map((periodId, index) => {
+              {this.props.periodIds.map((periodId, index) => {
                 return (
                   <Period
-                    {...this.props.periods.byId[periodId]}
+                    {...this.props.periods[periodId]}
                     key={periodId}
                     index={index}
                   />
@@ -77,7 +95,8 @@ class PeriodList extends PureComponent {
 
 function mapStateToProps(state) {
   return {
-    periods: state.periods
+    periodIds: state.periods.allIds,
+    periods: state.periods.byId
   };
 }
 

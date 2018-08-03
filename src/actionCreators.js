@@ -1,20 +1,41 @@
-export function dragDropPeriod(payload) {
+export function dropPeriod(payload) {
   return {
-    type: "DRAG_DROP_PERIOD",
+    type: "DROP_PERIOD",
     payload: payload
   };
 }
 
-export function dragDropEvent(payload) {
+export function dropEvent(payload) {
   return {
-    type: "DRAG_DROP_EVENT",
+    type: "DROP_EVENT",
     payload: payload
   };
 }
 
-export function dragDropScene(payload) {
+export function dropScene(payload) {
   return {
-    type: "DRAG_DROP_SCENE",
+    type: "DROP_SCENE",
+    payload: payload
+  };
+}
+
+export function dragPeriod(payload) {
+  return {
+    type: "DRAG_PERIOD",
+    payload: payload
+  };
+}
+
+export function dragEvent(payload) {
+  return {
+    type: "DRAG_EVENT",
+    payload: payload
+  };
+}
+
+export function dragScene(payload) {
+  return {
+    type: "DRAG_SCENE",
     payload: payload
   };
 }

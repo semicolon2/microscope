@@ -22,7 +22,7 @@ class SceneList extends PureComponent {
             {this.props.sceneIds.map((sceneId, index) => {
               return (
                 <Scene
-                  {...this.props.scenes.byId[sceneId]}
+                  {...this.props.scenes[sceneId]}
                   key={sceneId}
                   index={index}
                 />
@@ -38,7 +38,7 @@ class SceneList extends PureComponent {
 
 function mapStateToProps(state) {
   return {
-    scenes: state.scenes
+    scenes: state.scenes.byId
   };
 }
 

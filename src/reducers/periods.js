@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 
-function dragDropPeriod(periodIds, action) {
+function reorderPeriod(periodIds, action) {
   const { startIndex, endIndex } = action.payload;
   let newPeriodIds = [...periodIds];
   const [removed] = newPeriodIds.splice(startIndex, 1);
@@ -8,7 +8,7 @@ function dragDropPeriod(periodIds, action) {
   return newPeriodIds;
 }
 
-function dragDropEvent(periods, action) {
+function reorderEvent(periods, action) {
   const { startIndex, endIndex, periodId } = action.payload;
   let period = { ...periods[periodId] };
   const [removed] = period.events.splice(startIndex, 1);
@@ -16,10 +16,24 @@ function dragDropEvent(periods, action) {
   return { ...periods, [periodId]: period };
 }
 
+function periodDropped(periods, action) {
+  const { periodId } = action.payload;
+  return { ...periods, [periodId]: { ...periods[periodId], dragging: false } };
+}
+
+function periodDragged(periods, action) {
+  const { periodId } = action.payload;
+  return { ...periods, [periodId]: { ...periods[periodId], dragging: true } };
+}
+
 function periodsById(state = {}, action) {
   switch (action.type) {
-    case "DRAG_DROP_EVENT":
-      return dragDropEvent(state, action);
+    case "DROP_EVENT":
+      return reorderEvent(state, action);
+    case "DROP_PERIOD":
+      return periodDropped(state, action);
+    case "DRAG_PERIOD":
+      return periodDragged(state, action);
     default:
       return state;
   }
@@ -27,8 +41,8 @@ function periodsById(state = {}, action) {
 
 function allPeriods(state = [], action) {
   switch (action.type) {
-    case "DRAG_DROP_PERIOD":
-      return dragDropPeriod(state, action);
+    case "DROP_PERIOD":
+      return reorderPeriod(state, action);
     default:
       return state;
   }

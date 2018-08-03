@@ -1,17 +1,31 @@
 import { combineReducers } from "redux";
 
-function dragDropScene(events, action) {
+function dropScene(events, action) {
   const { startIndex, endIndex, eventId } = action.payload;
   let event = { ...events[eventId] };
   const [removed] = event.scenes.splice(startIndex, 1);
   event.scenes.splice(endIndex, 0, removed);
-  return { ...events, event };
+  return { ...events, [eventId]: event };
+}
+
+function dragEvent(events, action) {
+  const { eventId } = action.payload;
+  return { ...events, [eventId]: { ...events[eventId], dragging: true } };
+}
+
+function dropEvent(events, action) {
+  const { eventId } = action.payload;
+  return { ...events, [eventId]: { ...events[eventId], dragging: false } };
 }
 
 function eventsById(state = {}, action) {
   switch (action.type) {
-    case "DRAG_DROP_SCENE":
-      return dragDropScene(state, action);
+    case "DROP_SCENE":
+      return dropScene(state, action);
+    case "DRAG_EVENT":
+      return dragEvent(state, action);
+    case "DROP_EVENT":
+      return dropEvent(state, action);
     default:
       return state;
   }
