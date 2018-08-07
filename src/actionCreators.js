@@ -39,3 +39,45 @@ export function dragScene(payload) {
     payload: payload
   };
 }
+
+export function addPeriod(payload) {
+  return {
+    type: "ADD_PERIOD",
+    payload: payload
+  };
+}
+
+export function addEvent(payload) {
+  return {
+    type: "ADD_EVENT",
+    payload: payload
+  };
+}
+
+export function addScene(payload) {
+  return {
+    type: "ADD_SCENE",
+    payload: payload
+  };
+}
+
+export function RemovePeriod(payload) {
+  return {
+    type: "REMOVE_PERIOD",
+    payload: payload
+  };
+}
+
+export function removeEvent(payload) {
+  return {
+    type: "REMOVE_EVENT",
+    payload: payload
+  };
+}
+
+export function removeScene(payload) {
+  return {
+    type: "REMOVE_SCENE",
+    payload: payload
+  };
+}
