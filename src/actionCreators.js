@@ -81,3 +81,24 @@ export function removeScene(payload) {
     payload: payload
   };
 }
+
+export function updatePeriod(payload) {
+  return {
+    type: "UPDATE_PERIOD",
+    payload: payload
+  };
+}
+
+export function updateEvent(payload) {
+  return {
+    type: "UPDATE_EVENT",
+    payload: payload
+  };
+}
+
+export function updateScene(payload) {
+  return {
+    type: "UPDATE_SCENE",
+    payload: payload
+  };
+}

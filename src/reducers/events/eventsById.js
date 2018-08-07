@@ -53,6 +53,14 @@ function removeScene(events, action) {
   };
 }
 
+function updateEvent(events, action) {
+  const event = action.payload;
+  return {
+    ...events,
+    [event.id]: { ...events[event.id], ...event }
+  };
+}
+
 export default function eventsById(state = {}, action) {
   switch (action.type) {
     case "DROP_SCENE":
@@ -69,6 +77,8 @@ export default function eventsById(state = {}, action) {
       return addScene(state, action);
     case "REMOVE_SCENE":
       return removeScene(state, action);
+    case "UPDATE_EVENT":
+      return updateEvent(state, action);
     default:
       return state;
   }

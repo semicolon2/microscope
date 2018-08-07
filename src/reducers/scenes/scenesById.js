@@ -8,17 +8,25 @@ function dropScene(scenes, action) {
   return { ...scenes, [sceneId]: { ...scenes[sceneId], dragging: false } };
 }
 
-function addScene(events, action) {
-  const { event } = action.payload;
+function addScene(scenes, action) {
+  const { scene } = action.payload;
   return {
-    ...events,
-    [event.id]: { ...event }
+    ...scenes,
+    [scene.id]: { ...scene }
   };
 }
 
-function removeScene(events, action) {
-  const { eventId } = action.payload;
-  return ({ [eventId]: deleted, ...newScenes } = events) => newScenes;
+function removeScene(scenes, action) {
+  const { sceneId } = action.payload;
+  return ({ [sceneId]: deleted, ...newScenes } = scenes) => newScenes;
+}
+
+function updateScene(scenes, action) {
+  const scene = action.payload;
+  return {
+    ...scenes,
+    [scene.id]: { ...scenes[scene.id], ...scene }
+  };
 }
 
 export default function scenesById(state = {}, action) {
@@ -31,6 +39,8 @@ export default function scenesById(state = {}, action) {
       return addScene(state, action);
     case "REMOVE_SCENE":
       return removeScene(state, action);
+    case "UPDATE_SCENE":
+      return updateScene(state, action);
     default:
       return state;
   }

@@ -58,6 +58,14 @@ function removeEvent(periods, action) {
   };
 }
 
+function updatePeriod(periods, action) {
+  const period = action.payload;
+  return {
+    ...periods,
+    [period.id]: { ...periods[period.id], ...period }
+  };
+}
+
 export default function periodsById(state = {}, action) {
   switch (action.type) {
     case "DROP_EVENT":
@@ -74,6 +82,8 @@ export default function periodsById(state = {}, action) {
       return addEvent(state, action);
     case "REMOVE_EVENT":
       return removeEvent(state, action);
+    case "UPDATE_PERIOD":
+      return updatePeriod(state, action);
     default:
       return state;
   }
