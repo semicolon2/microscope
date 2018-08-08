@@ -5,10 +5,19 @@ import { Draggable } from "react-beautiful-dnd";
 import Tone from "./Tone";
 
 class Scene extends PureComponent {
-  toneTrigger = (
-    <div className="flex justify-around m-1">
-      <p className="pr-1">{this.props.question}</p>
-      <Tone toneHeight="h-6" tone={this.props.tone} />
+  trigger = (
+    <div className="flex justify-between">
+      <p className="pl-4 text-grey-dark">&#9660;</p>
+      <p className="text-grey-dark">&#9660;</p>
+      <p className="pr-4 text-grey-dark">&#9660;</p>
+    </div>
+  );
+
+  openTrigger = (
+    <div className="flex justify-between">
+      <p className="pl-4 text-grey-darker">&#9650;</p>
+      <p className="text-grey-darker">&#9650;</p>
+      <p className="pr-4 text-grey-darker">&#9650;</p>
     </div>
   );
 
@@ -25,8 +34,19 @@ class Scene extends PureComponent {
               }`}
             >
               <span className="drag-handle" {...provided.dragHandleProps} />
+              <div className="flex flex-row items-center mt-1">
+                <p className="m-auto text-center">{this.props.question}</p>
+                <Tone
+                  classNames="inline m-auto mr-1 cursor-pointer w-6 h-6"
+                  tone={this.props.tone}
+                />
+              </div>
               <div>
-                <Collapsible trigger={this.toneTrigger} transitionTime={200}>
+                <Collapsible
+                  trigger={this.trigger}
+                  triggerWhenOpen={this.openTrigger}
+                  transitionTime={200}
+                >
                   <div className="p-1 m-auto text-center">
                     <p className="border-t border-grey-darkest">
                       {this.props.text}

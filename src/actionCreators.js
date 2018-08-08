@@ -113,10 +113,10 @@ export function updatePeriod(period) {
   };
 }
 
-export function updateEvent(payload) {
+export function updateEvent(event) {
   return {
     type: "UPDATE_EVENT",
-    payload: payload
+    payload: event
   };
 }
 

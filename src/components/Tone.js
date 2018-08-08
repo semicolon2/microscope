@@ -7,7 +7,8 @@ const Tone = props => {
     <img
       src={props.tone === "light" ? circleLight : circleDark}
       alt={props.tone + " tone"}
-      className={"center inline mt-1 " + props.toneHeight}
+      className={props.classNames}
+      onClick={props.onClick}
     />
   );
 };

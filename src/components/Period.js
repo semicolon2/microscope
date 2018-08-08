@@ -9,6 +9,13 @@ class Period extends PureComponent {
     this.props.updatePeriod({ id: this.props.id, text: e.target.value });
   };
 
+  handleUpdateTone = () => {
+    this.props.updatePeriod({
+      id: this.props.id,
+      tone: this.props.tone === "dark" ? "light" : "dark"
+    });
+  };
+
   render() {
     return (
       <Draggable
@@ -39,7 +46,7 @@ class Period extends PureComponent {
               />
               <Tone
                 tone={this.props.tone}
-                toneHeight="h-16"
+                classNames="inline m-auto mt-1 mb-1 cursor-pointer w-16 h-16"
                 onClick={this.handleUpdateTone}
               />
             </div>

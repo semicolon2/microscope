@@ -83,7 +83,7 @@ class DndContext extends PureComponent {
 }
 
 const DndContextContainer = connect(
-  () => {},
+  () => ({}),
   actionCreators
 )(DndContext);
 

@@ -25,6 +25,7 @@ class EventList extends PureComponent {
                   {...this.props.events[eventId]}
                   key={eventId}
                   index={index}
+                  updateEvent={this.props.updateEvent}
                 />
               );
             })}
