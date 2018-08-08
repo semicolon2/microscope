@@ -1,5 +1,6 @@
 import React, { PureComponent } from "react";
 import { Draggable } from "react-beautiful-dnd";
+import TextAreaAutosize from "react-autosize-textarea";
 
 import Tone from "./Tone";
 import EventList from "./EventList";
@@ -37,11 +38,11 @@ class Period extends PureComponent {
               }`}
             >
               <span className="drag-handle" {...provided.dragHandleProps} />
-              <textarea
+              <TextAreaAutosize
                 className="text-center"
                 value={this.props.text}
                 style={{ resize: "none", height: "auto" }}
-                rows="4"
+                maxRows={5}
                 onChange={this.handleUpdateText}
               />
               <Tone

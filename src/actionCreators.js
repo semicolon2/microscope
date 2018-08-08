@@ -85,24 +85,24 @@ export function addScene(eventId) {
   };
 }
 
-export function removePeriod(payload) {
+export function removePeriod(periodId) {
   return {
     type: "REMOVE_PERIOD",
-    payload: payload
+    payload: periodId
   };
 }
 
-export function removeEvent(payload) {
+export function removeEvent(eventId) {
   return {
     type: "REMOVE_EVENT",
-    payload: payload
+    payload: eventId
   };
 }
 
-export function removeScene(payload) {
+export function removeScene(sceneId) {
   return {
     type: "REMOVE_SCENE",
-    payload: payload
+    payload: sceneId
   };
 }
 
@@ -120,9 +120,9 @@ export function updateEvent(event) {
   };
 }
 
-export function updateScene(payload) {
+export function updateScene(scene) {
   return {
     type: "UPDATE_SCENE",
-    payload: payload
+    payload: scene
   };
 }

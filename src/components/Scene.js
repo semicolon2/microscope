@@ -1,25 +1,46 @@
 import React, { PureComponent } from "react";
 import Collapsible from "react-collapsible";
 import { Draggable } from "react-beautiful-dnd";
+import TextAreaAutosize from "react-autosize-textarea";
 
 import Tone from "./Tone";
+import OpenCard from "./OpenCard";
 
 class Scene extends PureComponent {
-  trigger = (
-    <div className="flex justify-between">
-      <p className="pl-4 text-grey-dark">&#9660;</p>
-      <p className="text-grey-dark">&#9660;</p>
-      <p className="pr-4 text-grey-dark">&#9660;</p>
-    </div>
-  );
+  handleOpen = () => {
+    this.props.updateScene({
+      id: this.props.id,
+      open: this.props.open === false ? true : false
+    });
+  };
 
-  openTrigger = (
-    <div className="flex justify-between">
-      <p className="pl-4 text-grey-darker">&#9650;</p>
-      <p className="text-grey-darker">&#9650;</p>
-      <p className="pr-4 text-grey-darker">&#9650;</p>
-    </div>
-  );
+  handleUpdateTone = () => {
+    this.props.updateScene({
+      id: this.props.id,
+      tone: this.props.tone === "dark" ? "light" : "dark"
+    });
+  };
+
+  handleUpdateQuestion = e => {
+    this.props.updateScene({
+      id: this.props.id,
+      question: e.target.value
+    });
+  };
+
+  handleUpdateText = e => {
+    this.props.updateScene({
+      id: this.props.id,
+      text: e.target.value
+    });
+  };
+
+  handleUpdateAnswer = e => {
+    this.props.updateScene({
+      id: this.props.id,
+      answer: e.target.value
+    });
+  };
 
   render() {
     return (
@@ -34,26 +55,44 @@ class Scene extends PureComponent {
               }`}
             >
               <span className="drag-handle" {...provided.dragHandleProps} />
-              <div className="flex flex-row items-center mt-1">
-                <p className="m-auto text-center">{this.props.question}</p>
+              <div className="flex flex-row items-center mt-1 mb-1">
+                <OpenCard onClick={this.handleOpen} open={this.props.open} />
+                <TextAreaAutosize
+                  className="text-center"
+                  style={{ resize: "none" }}
+                  maxRows={4}
+                  value={this.props.question}
+                  onChange={this.handleUpdateQuestion}
+                />
                 <Tone
                   classNames="inline m-auto mr-1 cursor-pointer w-6 h-6"
                   tone={this.props.tone}
+                  onClick={this.handleUpdateTone}
                 />
               </div>
               <div>
                 <Collapsible
-                  trigger={this.trigger}
-                  triggerWhenOpen={this.openTrigger}
+                  trigger=""
                   transitionTime={200}
+                  open={this.props.open}
                 >
                   <div className="p-1 m-auto text-center">
-                    <p className="border-t border-grey-darkest">
-                      {this.props.text}
-                    </p>
-                    <p className="border-t border-grey-darkest">
-                      {this.props.answer}
-                    </p>
+                    <TextAreaAutosize
+                      className="border-grey-darkest border-t"
+                      style={{ resize: "none" }}
+                      rows={2}
+                      maxRows={6}
+                      value={this.props.text}
+                      onChange={this.handleUpdateText}
+                    />
+                    <TextAreaAutosize
+                      className="border-grey-darkest border-t"
+                      style={{ resize: "none" }}
+                      rows={2}
+                      maxRows={4}
+                      value={this.props.answer}
+                      onChange={this.handleUpdateAnswer}
+                    />
                   </div>
                 </Collapsible>
               </div>

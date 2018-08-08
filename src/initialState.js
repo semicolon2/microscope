@@ -34,6 +34,7 @@ const initialState = {
         text: "brief but clear description of event",
         tone: "dark",
         dragging: false,
+        open: false,
         scenes: ["scene3", "scene4"]
       },
       event2: {
@@ -43,6 +44,7 @@ const initialState = {
         text: "a second event with no scenes",
         tone: "light",
         dragging: false,
+        open: false,
         scenes: []
       },
       event3: {
@@ -52,6 +54,7 @@ const initialState = {
         text: "the third event with some scenes",
         tone: "light",
         dragging: false,
+        open: false,
         scenes: ["scene1", "scene2"]
       },
       event4: {
@@ -61,6 +64,7 @@ const initialState = {
         text: "the fourth event for DnD",
         tone: "light",
         dragging: false,
+        open: false,
         scenes: []
       },
       event5: {
@@ -70,6 +74,7 @@ const initialState = {
         text: "another event under p2",
         tone: "light",
         dragging: false,
+        open: false,
         scenes: []
       }
     },
@@ -85,7 +90,8 @@ const initialState = {
         text: "the quick description of events",
         answer: "the answer to the question",
         tone: "light",
-        dragging: false
+        dragging: false,
+        open: false
       },
       scene2: {
         id: "scene2",
@@ -94,7 +100,8 @@ const initialState = {
         text: "the quick description of events",
         answer: "the answer to the question",
         tone: "dark",
-        dragging: false
+        dragging: false,
+        open: false
       },
       scene3: {
         id: "scene3",
@@ -103,7 +110,8 @@ const initialState = {
         text: "the quick description of events",
         answer: "the answer to the question",
         tone: "dark",
-        dragging: false
+        dragging: false,
+        open: false
       },
       scene4: {
         id: "scene4",
@@ -112,7 +120,8 @@ const initialState = {
         text: "the quick description of events",
         answer: "the answer to the question",
         tone: "light",
-        dragging: false
+        dragging: false,
+        open: false
       }
     },
     allIds: ["scene1", "scene2", "scene3", "scene4"]
