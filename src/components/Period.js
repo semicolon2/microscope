@@ -5,6 +5,10 @@ import Tone from "./Tone";
 import EventList from "./EventList";
 
 class Period extends PureComponent {
+  handleUpdateText = e => {
+    this.props.updatePeriod({ id: this.props.id, text: e.target.value });
+  };
+
   render() {
     return (
       <Draggable
@@ -26,8 +30,18 @@ class Period extends PureComponent {
               }`}
             >
               <span className="drag-handle" {...provided.dragHandleProps} />
-              <p className="text-center">{this.props.text}</p>
-              <Tone tone={this.props.tone} toneHeight="h-16" />
+              <textarea
+                className="text-center"
+                value={this.props.text}
+                style={{ resize: "none", height: "auto" }}
+                rows="4"
+                onChange={this.handleUpdateText}
+              />
+              <Tone
+                tone={this.props.tone}
+                toneHeight="h-16"
+                onClick={this.handleUpdateTone}
+              />
             </div>
             <EventList periodId={this.props.id} eventIds={this.props.events} />
           </div>

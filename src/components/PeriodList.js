@@ -23,6 +23,7 @@ class PeriodList extends PureComponent {
               return (
                 <Period
                   {...this.props.periods[periodId]}
+                  updatePeriod={this.props.updatePeriod}
                   key={periodId}
                   index={index}
                 />

@@ -106,10 +106,10 @@ export function removeScene(payload) {
   };
 }
 
-export function updatePeriod(payload) {
+export function updatePeriod(period) {
   return {
     type: "UPDATE_PERIOD",
-    payload: payload
+    payload: period
   };
 }
 
