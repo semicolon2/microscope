@@ -9,7 +9,7 @@ function dropScene(scenes, action) {
 }
 
 function addScene(scenes, action) {
-  const { scene } = action.payload;
+  const scene = action.payload;
   return {
     ...scenes,
     [scene.id]: { ...scene }

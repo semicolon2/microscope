@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import PeriodList from "./components/PeriodList";
+import DndContext from "./components/DndContext";
 
 class App extends Component {
   render() {
     return (
       <div>
-        <PeriodList />
+        <DndContext />
       </div>
     );
   }

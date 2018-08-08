@@ -6,6 +6,10 @@ import * as actionCreators from "../actionCreators";
 import Scene from "./Scene";
 
 class SceneList extends PureComponent {
+  handleAddCard = () => {
+    this.props.addScene(this.props.eventId);
+  };
+
   render() {
     return (
       <Droppable droppableId={this.props.eventId} type="scene">
@@ -26,6 +30,12 @@ class SceneList extends PureComponent {
               );
             })}
             {provided.placeholder}
+            <div
+              className="add-card border rounded w-48 border-t-0 rounded-t-none trans hover:border-grey-dark hover:text-grey-darker hover:shadow-lg cursor-pointer"
+              onClick={this.handleAddCard}
+            >
+              <p className="text-3xl">+</p>
+            </div>
           </div>
         )}
       </Droppable>

@@ -23,7 +23,7 @@ function dropEvent(events, action) {
 }
 
 function addEvent(events, action) {
-  const { event } = action.payload;
+  const event = action.payload;
   return {
     ...events,
     [event.id]: { ...event }
@@ -36,11 +36,11 @@ function removeEvent(events, action) {
 }
 
 function addScene(events, action) {
-  const { eventId, scene } = action.payload;
-  const event = events[eventId];
+  const scene = action.payload;
+  const event = events[scene.eventId];
   return {
     ...events,
-    [eventId]: { ...event, scenes: event.scenes.concat(scene.id) }
+    [scene.eventId]: { ...event, scenes: event.scenes.concat(scene.id) }
   };
 }
 
@@ -49,7 +49,10 @@ function removeScene(events, action) {
   const event = events[eventId];
   return {
     ...events,
-    [eventId]: { ...event, scenes: scenes.filter(scene => scene !== sceneId) }
+    [eventId]: {
+      ...event,
+      scenes: event.scenes.filter(scene => scene !== sceneId)
+    }
   };
 }
 

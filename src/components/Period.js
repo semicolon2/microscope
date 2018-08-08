@@ -19,14 +19,11 @@ class Period extends PureComponent {
             ref={provided.innerRef}
           >
             <div
-              className={`card-border w-32 h-48 trans ${
-                snapshot.isDragging ? "shadow-lg" : "shadow-md"
+              className={`card-border w-32 h-48 trans shadow-md hover:shadow-lg ${
+                snapshot.isDragging || this.props.eventIsDragging
+                  ? "shadow-lg"
+                  : ""
               }`}
-              style={
-                snapshot.isDragging
-                  ? { transform: "scale(1.05)" }
-                  : { transform: "scale(1)" }
-              }
             >
               <span className="drag-handle" {...provided.dragHandleProps} />
               <p className="text-center">{this.props.text}</p>

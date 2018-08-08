@@ -1,3 +1,5 @@
+import nanoid from "nanoid";
+
 export function dropPeriod(payload) {
   return {
     type: "DROP_PERIOD",
@@ -40,28 +42,50 @@ export function dragScene(payload) {
   };
 }
 
-export function addPeriod(payload) {
+export function addPeriod() {
   return {
     type: "ADD_PERIOD",
-    payload: payload
+    payload: {
+      id: "period-" + nanoid(10),
+      text: "title",
+      tone: "dark",
+      dragging: false,
+      events: []
+    }
   };
 }
 
-export function addEvent(payload) {
+export function addEvent(periodId) {
   return {
     type: "ADD_EVENT",
-    payload: payload
+    payload: {
+      id: "event-" + nanoid(10),
+      periodId: periodId,
+      title: "title",
+      text: "description",
+      tone: "dark",
+      dragging: false,
+      scenes: []
+    }
   };
 }
 
-export function addScene(payload) {
+export function addScene(eventId) {
   return {
     type: "ADD_SCENE",
-    payload: payload
+    payload: {
+      id: "scene-" + nanoid(10),
+      eventId: eventId,
+      question: "question",
+      text: "description",
+      answer: "answer",
+      tone: "dark",
+      dragging: false
+    }
   };
 }
 
-export function RemovePeriod(payload) {
+export function removePeriod(payload) {
   return {
     type: "REMOVE_PERIOD",
     payload: payload

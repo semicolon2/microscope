@@ -1,5 +1,5 @@
 function addScene(scenes, action) {
-  const { sceneId } = action.payload;
+  const sceneId = action.payload.id;
   return scenes.concat(sceneId);
 }
 

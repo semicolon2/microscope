@@ -6,6 +6,10 @@ import * as actionCreators from "../actionCreators";
 import Event from "./Event";
 
 class EventList extends PureComponent {
+  handleAddCard = () => {
+    this.props.addEvent(this.props.periodId);
+  };
+
   render() {
     return (
       <Droppable droppableId={this.props.periodId} type="event">
@@ -25,6 +29,12 @@ class EventList extends PureComponent {
               );
             })}
             {provided.placeholder}
+            <div
+              className="card-border add-card w-48 trans hover:border-grey-dark hover:text-grey-darker hover:shadow-lg cursor-pointer"
+              onClick={this.handleAddCard}
+            >
+              <p className="text-4xl">+</p>
+            </div>
           </div>
         )}
       </Droppable>

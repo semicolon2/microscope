@@ -1,5 +1,3 @@
-import { addEvent } from "../../actionCreators";
-
 function reorderEvent(periods, action) {
   const { startIndex, endIndex, periodId } = action.payload;
   let period = { ...periods[periodId] };
@@ -33,22 +31,22 @@ function addPeriod(periods, action) {
 }
 
 function removePeriod(periods, action) {
-  const { periodId } = action.payload;
+  const periodId = action.payload;
   return ({ [periodId]: deleted, ...newPeriods } = periods) => newPeriods;
 }
 
 function addEvent(periods, action) {
-  const { periodId, event } = action.payload;
-  const period = periods[periodId];
+  const event = action.payload;
+  const period = periods[event.periodId];
   return {
     ...periods,
-    [periodId]: { ...period, events: period.events.concat(event.id) }
+    [event.periodId]: { ...period, events: period.events.concat(event.id) }
   };
 }
 
 function removeEvent(periods, action) {
   const { periodId, eventId } = action.payload;
-  const period = periods[periodID];
+  const period = periods[periodId];
   return {
     ...periods,
     [periodId]: {

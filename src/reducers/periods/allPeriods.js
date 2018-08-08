@@ -7,12 +7,12 @@ function reorderPeriod(periodIds, action) {
 }
 
 function addPeriod(periodIds, action) {
-  const { period } = action.payload;
-  return periodIds.concat(period.id);
+  const periodId = action.payload.id;
+  return periodIds.concat(periodId);
 }
 
 function removePeriod(periodIds, action) {
-  const { periodId } = action.payload;
+  const periodId = action.payload;
   return periodIds.filter(period => period !== periodId);
 }
 

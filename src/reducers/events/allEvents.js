@@ -1,5 +1,5 @@
 function addEvent(events, action) {
-  const { eventId } = action.payload;
+  const eventId = action.payload.id;
   return events.concat(eventId);
 }
 

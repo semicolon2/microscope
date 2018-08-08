@@ -23,14 +23,11 @@ class Event extends PureComponent {
         {(provided, snapshot) => (
           <div {...provided.draggableProps} ref={provided.innerRef}>
             <div
-              className={`card-border w-48 h-auto mb-0 trans ${
-                snapshot.isDragging ? "shadow-lg" : "shadow-md"
+              className={`card-border w-48 h-auto mb-0 trans shadow-md hover:shadow-lg ${
+                snapshot.isDragging || this.props.eventIsDragging
+                  ? "shadow-lg"
+                  : ""
               }`}
-              style={
-                snapshot.isDragging
-                  ? { transform: "scale(1.05)" }
-                  : { transform: "scale(1)" }
-              }
             >
               <span className="drag-handle" {...provided.dragHandleProps} />
               <div className="mt-1 mb-1 text-center">
