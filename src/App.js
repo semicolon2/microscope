@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-import DndContext from "./components/DndContext";
+
+import CardContainer from "./components/CardContainer";
 
 class App extends Component {
   render() {
     return (
       <div>
-        <DndContext />
+        <CardContainer />
       </div>
     );
   }

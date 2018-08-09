@@ -18,10 +18,13 @@ class Period extends PureComponent {
 
   render() {
     return (
-      <div className="flex flex-col items-center">
-        <div
-          className={`card-border w-32 h-48 trans shadow-md hover:shadow-lg`}
-        >
+      <div
+        className={`flex flex-col items-center ${
+          this.props.id === "periodStart" ? "ml-auto" : "mr-auto"
+        }`}
+        style={{ minWidth: "12rem" }}
+      >
+        <div className="card-border w-32 h-48 trans shadow-md hover:shadow-lg">
           <span />
           <TextAreaAutosize
             className="text-center"

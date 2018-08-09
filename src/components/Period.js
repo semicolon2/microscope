@@ -29,6 +29,7 @@ class Period extends PureComponent {
             className="flex flex-col items-center"
             {...provided.draggableProps}
             ref={provided.innerRef}
+            style={{ minWidth: "13rem", ...provided.draggableProps.style }}
           >
             <div
               className={`card-border w-32 h-48 trans shadow-md hover:shadow-lg ${
