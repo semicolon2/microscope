@@ -21,9 +21,23 @@ const initialState = {
         tone: "light",
         dragging: false,
         events: []
+      },
+      periodStart: {
+        id: "periodStart",
+        text: "Initial starting period",
+        tone: "light",
+        dragging: false,
+        events: []
+      },
+      periodEnd: {
+        id: "periodEnd",
+        text: "Initial ending period",
+        tone: "light",
+        dragging: false,
+        events: []
       }
     },
-    allIds: ["period1", "period2", "period3"]
+    allIds: ["periodStart", "period1", "period2", "period3", "periodEnd"]
   },
   events: {
     byId: {

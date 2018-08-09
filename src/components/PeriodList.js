@@ -4,6 +4,7 @@ import { Droppable } from "react-beautiful-dnd";
 
 import * as actionCreators from "../actionCreators";
 import Period from "./Period";
+import PeriodUndraggable from "./PeriodUndraggable";
 
 class PeriodList extends PureComponent {
   handleAddCard = () => {
@@ -19,16 +20,25 @@ class PeriodList extends PureComponent {
             ref={provided.innerRef}
             {...provided.droppableProps}
           >
-            {this.props.periodIds.map((periodId, index) => {
-              return (
-                <Period
-                  {...this.props.periods[periodId]}
-                  updatePeriod={this.props.updatePeriod}
-                  key={periodId}
-                  index={index}
-                />
-              );
-            })}
+            <PeriodUndraggable
+              {...this.props.periods["periodStart"]}
+              updatePeriod={this.props.updatePeriod}
+            />
+            {this.props.periodIds
+              .filter(
+                periodId =>
+                  periodId !== "periodStart" && periodId !== "periodEnd"
+              )
+              .map((periodId, index) => {
+                return (
+                  <Period
+                    {...this.props.periods[periodId]}
+                    updatePeriod={this.props.updatePeriod}
+                    key={periodId}
+                    index={index}
+                  />
+                );
+              })}
             {provided.placeholder}
             <div
               className="card-border add-card w-32 h-48 trans hover:border-grey-dark hover:text-grey-darker hover:shadow-lg cursor-pointer"
@@ -36,6 +46,10 @@ class PeriodList extends PureComponent {
             >
               <p className="text-5xl">+</p>
             </div>
+            <PeriodUndraggable
+              {...this.props.periods["periodEnd"]}
+              updatePeriod={this.props.updatePeriod}
+            />
           </div>
         )}
       </Droppable>
