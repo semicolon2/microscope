@@ -9,9 +9,10 @@ export default class CardContainer extends PureComponent {
       <div>
         <Nav />
         <div
-          className="overflow-auto scroll"
+          className="overflow-auto scroll border border-grey"
           style={{
-            maxHeight: "95vh"
+            height: "98vh",
+            maxHeight: "98vh"
           }}
         >
           <DndContext />

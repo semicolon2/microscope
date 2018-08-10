@@ -16,7 +16,9 @@ class PeriodList extends PureComponent {
       <Droppable droppableId="periods" direction="horizontal" type="period">
         {provided => (
           <div
-            className="flex items-start m-4"
+            className={`flex items-start m-4 ${
+              this.props.deletable ? "bg-red-light" : ""
+            }`}
             ref={provided.innerRef}
             {...provided.droppableProps}
           >
@@ -60,7 +62,8 @@ class PeriodList extends PureComponent {
 function mapStateToProps(state) {
   return {
     periodIds: state.periods.allIds,
-    periods: state.periods.byId
+    periods: state.periods.byId,
+    deletable: state.deletable
   };
 }
 

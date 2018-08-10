@@ -126,3 +126,9 @@ export function updateScene(scene) {
     payload: scene
   };
 }
+
+export function toggleDelete() {
+  return {
+    type: "TOGGLE_DELETE"
+  };
+}

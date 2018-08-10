@@ -1,4 +1,5 @@
 const initialState = {
+  deletable: false,
   periods: {
     byId: {
       period1: {

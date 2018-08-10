@@ -32,7 +32,7 @@ class SceneList extends PureComponent {
             })}
             {provided.placeholder}
             <div
-              className="add-card border rounded w-48 border-t-0 rounded-t-none trans hover:border-grey-dark hover:text-grey-darker hover:shadow-lg cursor-pointer"
+              className="add-card border rounded w-48 border-t-0 rounded-t-none trans bg-white hover:border-grey-dark hover:text-grey-darker hover:shadow-lg cursor-pointer"
               onClick={this.handleAddCard}
             >
               <p className="text-3xl">+</p>
