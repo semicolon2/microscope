@@ -15,10 +15,11 @@ const store = createStore(
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
-ReactDOM.render(
+const Root = () => (
   <Provider store={store}>
     <App />
-  </Provider>,
-  document.getElementById("root")
+  </Provider>
 );
+
+ReactDOM.render(<Root />, document.getElementById("root"));
 registerServiceWorker();

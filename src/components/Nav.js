@@ -3,17 +3,10 @@ import { connect } from "react-redux";
 import * as actionCreators from "../actionCreators";
 
 class Nav extends PureComponent {
-  handleDeleteClick = () => {
-    this.props.toggleDelete();
-  };
-
   render() {
     return (
       <div className="float-right w-64 h-full flex justify-center flex-wrap">
-        <button
-          onClick={this.handleDeleteClick}
-          className="border border-red-dark bg-red-light rounded p-1 m-1 w-16"
-        >
+        <button className="border border-red-dark bg-red-light rounded p-1 m-1 w-16">
           Delete
         </button>
         <button className="border border-orange-dark bg-orange-light rounded p-1 m-1 w-16">
@@ -25,9 +18,7 @@ class Nav extends PureComponent {
 }
 
 function mapStateToProps(state) {
-  return {
-    deletable: state.deletable
-  };
+  return {};
 }
 
 const NavContainer = connect(

@@ -61,9 +61,8 @@ class PeriodList extends PureComponent {
 
 function mapStateToProps(state) {
   return {
-    periodIds: state.periods.allIds,
-    periods: state.periods.byId,
-    deletable: state.deletable
+    periodIds: state.cards.periods.allIds,
+    periods: state.cards.periods.byId
   };
 }
 

@@ -13,10 +13,24 @@ function deletable(state = false, action) {
   }
 }
 
-const reducer = combineReducers({
+function room(state = "", action) {
+  switch (action.type) {
+    case "UPDATE_ROOM":
+      return action.payload.roomId;
+    default:
+      return state;
+  }
+}
+
+const cards = combineReducers({
   periods,
   events,
-  scenes,
+  scenes
+});
+
+const reducer = combineReducers({
+  cards,
+  room,
   deletable
 });
 

@@ -1,13 +1,16 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
+import { Router, Link } from "@reach/router";
 
 import CardContainer from "./components/CardContainer";
+import Landing from "./components/Landing";
 
-class App extends Component {
+class App extends PureComponent {
   render() {
     return (
-      <div>
-        <CardContainer />
-      </div>
+      <Router>
+        <Landing path="/" />
+        <CardContainer path="/room/:roomId" />
+      </Router>
     );
   }
 }

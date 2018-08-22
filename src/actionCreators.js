@@ -132,3 +132,10 @@ export function toggleDelete() {
     type: "TOGGLE_DELETE"
   };
 }
+
+export function updateRoom(roomId) {
+  return {
+    type: "UPDATE_ROOM",
+    payload: { roomId: roomId }
+  };
+}

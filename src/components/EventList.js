@@ -45,7 +45,7 @@ class EventList extends PureComponent {
 
 function mapStateToProps(state) {
   return {
-    events: state.events.byId
+    events: state.cards.events.byId
   };
 }
 

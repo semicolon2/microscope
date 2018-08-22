@@ -46,7 +46,7 @@ class SceneList extends PureComponent {
 
 function mapStateToProps(state) {
   return {
-    scenes: state.scenes.byId
+    scenes: state.cards.scenes.byId
   };
 }
 
